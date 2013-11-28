@@ -33,7 +33,7 @@ So imagine we have these files:
 <html>
 	<body>
 		<img src="{{ 'living.png' | asset_path | relative_path }}" />
-    </body>
+  </body>
 </html>
 ```
 
@@ -49,7 +49,7 @@ The resulting html will be:
 <html>
 	<body>
 		<img src="../../assets/living.png" />
-    </body>
+  </body>
 </html>
 ```
 
@@ -57,8 +57,16 @@ The other filter is `relative_tag` which can be used with `stylesheet`,
 `javascript` and `image`.
 
 ```
-{{ 'living.png' | image | relative_tag }}
+# /_site/house/rooms/living.html
+
+<html>
+  <body>
+    {{ 'living.png' | image | relative_tag }}
+  </body>
+</html>
 ```
+
+And the output is the same as before.
 
 ## TODO
 
