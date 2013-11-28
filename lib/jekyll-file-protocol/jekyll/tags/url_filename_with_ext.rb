@@ -14,8 +14,6 @@ module JekyllFileProtocol
       def render(context)
         uri = URI.parse(context.registers[:page]['url'])
 
-        require 'pry'; binding.pry
-
         File.basename(uri.path)
       end
 
