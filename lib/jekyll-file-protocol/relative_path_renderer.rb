@@ -25,8 +25,10 @@ module JekyllFileProtocol
       end
 
       def generate_relative_path!
-        @relative_path = @path and return unless is_absolute_path?
+        @relative_path = @path
         relative       = @relative_path
+        
+        return unless is_absolute_path?
 
         if relative.start_with?('//')
           relative = relative[2..-1]

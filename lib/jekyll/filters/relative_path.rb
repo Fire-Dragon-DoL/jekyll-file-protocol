@@ -8,6 +8,7 @@ module JekyllFileProtocol
 
       def relative_path(input)
         require 'pry'; binding.pry
+        return input if input.nil?
         ::JekyllFileProtocol::RelativePathRenderer.new(@context, input).render
       end
 
