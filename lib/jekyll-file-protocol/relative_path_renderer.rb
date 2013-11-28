@@ -3,8 +3,9 @@ module JekyllFileProtocol
   class RelativePathRenderer
 
     def initialize(context, path)
-      @context = context
-      @path    = path.strip
+      @context  = context
+      @page_url = @context.registers[:page]['url']
+      @path     = path.strip
 
       generate_relative_path! if is_absolute_path?
     end
@@ -16,7 +17,7 @@ module JekyllFileProtocol
     protected
 
       def count_depth(path)
-        @context.registers[:page]['url'].scan('/').size
+        @page_url.scan('/').size
       end
 
       def is_absolute_path?
@@ -33,7 +34,7 @@ module JekyllFileProtocol
           relative = relative[1..-1]
         end
 
-        relative       = ("../" * count_depth(@context.registers[:page]['url'])) + relative
+        relative       = ("../" * count_depth(@page_url)) + relative
         @relative_path = relative
       end
 
