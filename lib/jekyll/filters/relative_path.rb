@@ -1,3 +1,4 @@
+require 'liquid'
 require 'nokogiri'
 require 'jekyll-file-protocol/relative_path_renderer'
 
