@@ -1,11 +1,13 @@
+require 'jekyll-file-protocol/relative_path_renderer'
+
 module JekyllFileProtocol
+
   module Jekyll
+
     module Filters
 
-      def relative_path(path)
-        require 'pry'
-        binding.pry
-        "ciao"
+      def relative_path(url)
+        ::JekyllFileProtocol::RelativePathRenderer.new(@context, url).render
       end
 
     end
