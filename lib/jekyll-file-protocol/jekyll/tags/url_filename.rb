@@ -20,4 +20,4 @@ module JekyllFileProtocol
 end
 
 
-Liquid::Template.register_tag 'url_filename', Jekyll::AssetsPlugin::UrlFilenameTag
+Liquid::Template.register_tag 'url_filename', JekyllFileProtocol::Jekyll::UrlFilenameTag
