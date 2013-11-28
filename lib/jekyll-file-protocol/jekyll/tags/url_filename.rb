@@ -7,8 +7,14 @@ module JekyllFileProtocol
 
     class UrlFilenameTag < Liquid::Tag
 
+      def initialize(tag_name, param, tokens)
+        super
+      end
+
       def render(context)
-        uri = URI.parse(context.registers[:page].url)
+        uri = URI.parse(context.registers[:page]['url'])
+
+        require 'pry'; binding.pry
 
         File.basename(uri.path, File.extname(uri.path))
       end
