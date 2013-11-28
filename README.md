@@ -10,7 +10,7 @@ This gem is born to help me creating relative paths for filters of the gem [jeky
 
 Add this line to your application's Gemfile:
 
-    gem 'jekyll-file-protocol', '~> 0.1.4'
+    gem 'jekyll-file-protocol', '~> 0.2.0'
 
 And then execute:
 
@@ -22,7 +22,7 @@ Or install it yourself as:
 
 ## Usage
 
-The gem actually provides a single helper (a filter) that is quite straightforward to use.  
+The gem actually provides some helpers (filters) that are quite straightforward to use.  
 The example will use the asset_path filter provided by jekyll-assets gem.
 
 So imagine we have these files:
@@ -51,6 +51,13 @@ The resulting html will be:
 		<img src="../../assets/living.png" />
     </body>
 </html>
+```
+
+The other filter is `relative_tag` which can be used with `stylesheet`,
+`javascript` and `image`.
+
+```
+{{ 'living.png' | image | relative_tag }}
 ```
 
 ## TODO
