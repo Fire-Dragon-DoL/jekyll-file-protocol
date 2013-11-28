@@ -5,7 +5,7 @@ module JekyllFileProtocol
 
   module Jekyll
 
-    class UriFilenameTag < Liquid::Tag
+    class UrlFilenameTag < Liquid::Tag
 
       def render(context)
         uri = URI.parse(context.registers[:page].url)
@@ -20,4 +20,4 @@ module JekyllFileProtocol
 end
 
 
-Liquid::Template.register_tag 'url_filename', Jekyll::AssetsPlugin::UriFilenameTag
+Liquid::Template.register_tag 'url_filename', Jekyll::AssetsPlugin::UrlFilenameTag
