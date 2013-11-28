@@ -10,7 +10,7 @@ This gem is born to help me creating relative paths for filters of the gem [jeky
 
 Add this line to your application's Gemfile:
 
-    gem 'jekyll-file-protocol', '~> 0.3.0'
+    gem 'jekyll-file-protocol', '~> 0.4.0'
 
 And then execute:
 
@@ -68,7 +68,18 @@ The other filter is `relative_tag` which can be used with `stylesheet`,
 
 And the output is the same as before.  
 There are also some useful helpers (tags) to get url filename with and without
-extension: `url_filename` and `url_filename_with_ext`.
+extension and directory of url filename:
+`url_filename`, `url_filename_with_ext` and `url_directoryname`.
+
+Examples
+
+```
+# /this/is/my/test.html
+
+{% url_filename %}          # => test
+{% url_filename_with_ext %} # => test.html
+{% url_directoryname %}     # => my
+```
 
 ## TODO
 
