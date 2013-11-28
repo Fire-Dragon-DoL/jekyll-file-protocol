@@ -1,6 +1,8 @@
 require 'jekyll-file-protocol/version'
 require 'jekyll-file-protocol/relative_path_renderer'
-require 'jekyll/filters/relative_path'
+require 'jekyll-file-protocol/jekyll/filters/relative_path'
+require 'jekyll-file-protocol/jekyll/tags/uri_filename'
+require 'jekyll-file-protocol/jekyll/tags/uri_filename_with_ext'
 
 
 module JekyllFileProtocol
