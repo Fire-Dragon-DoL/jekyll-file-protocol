@@ -7,7 +7,7 @@ module JekyllFileProtocol
       @page_url = @context.registers[:page]['url']
       @path     = path.strip
 
-      generate_relative_path! if is_absolute_path?
+      generate_relative_path!
     end
 
     def render
@@ -25,7 +25,7 @@ module JekyllFileProtocol
       end
 
       def generate_relative_path!
-        @relative_path = @path
+        @relative_path = @path and return unless is_absolute_path?
         relative       = @relative_path
 
         if relative.start_with?('//')

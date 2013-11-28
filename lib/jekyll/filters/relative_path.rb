@@ -6,8 +6,9 @@ module JekyllFileProtocol
 
     module Filters
 
-      def relative_path(url)
-        ::JekyllFileProtocol::RelativePathRenderer.new(@context, url).render
+      def relative_path(input)
+        require 'pry'; binding.pry
+        ::JekyllFileProtocol::RelativePathRenderer.new(@context, input).render
       end
 
     end
