@@ -17,7 +17,7 @@ module JekyllFileProtocol
     protected
 
       def count_depth(path)
-        @page_url.scan('/').size
+        clear_leading_slashes(@page_url).scan('/').size
       end
 
       def is_absolute_path?
@@ -30,14 +30,23 @@ module JekyllFileProtocol
         
         return unless is_absolute_path?
 
-        if relative.start_with?('//')
-          relative = relative[2..-1]
-        else
-          relative = relative[1..-1]
-        end
+        relative       = clear_leading_slashes(relative)
 
         relative       = ("../" * count_depth(@page_url)) + relative
         @relative_path = relative
+      end
+
+    private
+
+      def clear_leading_slashes(path)
+        return path unless path.start_with?('/')
+        real_path = path
+
+        if real_path.start_with?('//')
+          real_path = real_path[2..-1]
+        else
+          real_path = real_path[1..-1]
+        end
       end
 
   end
