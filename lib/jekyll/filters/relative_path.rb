@@ -16,28 +16,34 @@ module JekyllFileProtocol
       def relative_tag(input)
         return input if input.nil?
 
-        node = Nokogiri::XML::DocumentFragment.parse(input)
-        tag  = nil
-
+        node   = Nokogiri::HTML.parse(input)
+        tags   = nil
+        
         # Stylesheet
-        if tag = node.at_css('link')
-          tag['href'] = ::JekyllFileProtocol::RelativePathRenderer.new(@context, tag['href']).render
-          return tag.to_s
+        if tags = node.css('link').to_a
+          return tags.map do |tag|
+            tag['href'] = ::JekyllFileProtocol::RelativePathRenderer.new(@context, tag['href']).render
+            tag
+          end.map(&:to_html)
         end
 
         # Javascript
-        if tag = node.at_css('script')
-          tag['src'] = ::JekyllFileProtocol::RelativePathRenderer.new(@context, tag['src']).render
-          return tag.to_s
+        if tags = node.css('script').to_a
+          return tags.map do |tag|
+            tag['src'] = ::JekyllFileProtocol::RelativePathRenderer.new(@context, tag['src']).render
+            tag
+          end.map(&:to_html)
         end
 
         # Image
-        if tag = node.at_css('img')
-          tag['src'] = ::JekyllFileProtocol::RelativePathRenderer.new(@context, tag['src']).render
-          return tag.to_s
+        if tags = node.css('img').to_a
+          return tags.map do |tag|
+            tag['src'] = ::JekyllFileProtocol::RelativePathRenderer.new(@context, tag['src']).render
+            tag
+          end.map(&:to_html)
         end
 
-        tag.to_s
+        input
       end
 
     end
