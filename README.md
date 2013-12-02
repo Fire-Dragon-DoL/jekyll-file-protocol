@@ -10,7 +10,7 @@ This gem is born to help me creating relative paths for filters of the gem [jeky
 
 Add this line to your application's Gemfile:
 
-    gem 'jekyll-file-protocol', '~> 0.4.0'
+    gem 'jekyll-file-protocol', '~> 0.4.1'
 
 And then execute:
 

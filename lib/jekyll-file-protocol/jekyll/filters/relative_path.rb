@@ -21,7 +21,7 @@ module JekyllFileProtocol
         tags   = nil
         
         # Stylesheet
-        if tags = node.css('link').to_a
+        if (tags = node.css('link').to_a).size < 1
           return tags.map do |tag|
             tag['href'] = ::JekyllFileProtocol::RelativePathRenderer.new(@context, tag['href']).render
             tag
@@ -29,7 +29,7 @@ module JekyllFileProtocol
         end
 
         # Javascript
-        if tags = node.css('script').to_a
+        if (tags = node.css('script').to_a).size < 1
           return tags.map do |tag|
             tag['src'] = ::JekyllFileProtocol::RelativePathRenderer.new(@context, tag['src']).render
             tag
@@ -37,7 +37,7 @@ module JekyllFileProtocol
         end
 
         # Image
-        if tags = node.css('img').to_a
+        if (tags = node.css('img').to_a).size < 1
           return tags.map do |tag|
             tag['src'] = ::JekyllFileProtocol::RelativePathRenderer.new(@context, tag['src']).render
             tag
